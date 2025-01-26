@@ -1,3 +1,4 @@
+import { Link } from "expo-router";
 import React from "react";
 import {
   View,
@@ -10,7 +11,7 @@ import {
   Pressable,
 } from "react-native";
 
-export default function LoginScreen({ navigation }) {
+export default function login() {
   return (
     <View style={styles.container}>
       <View style={styles.titlePage}>
@@ -20,13 +21,13 @@ export default function LoginScreen({ navigation }) {
       <View style={styles.ImageContainer}>
         <Image
           style={styles.ImageSize}
-          source={require("../../assets/images/splash-icon.png")}
+          source={require("../assets/images/splash-icon.png")}
         />
       </View>
       {/* Sign In Content */}
       <View style={styles.SignInContent}>
         {/* Sign In Title Continer */}
-        <View style={styles.SignInTitleContainer}>
+        <View>
           <Text style={styles.SignInTitle}>Sign In</Text>
           <Text style={styles.signInSubTitle}>Please Sign In to continue</Text>
         </View>
@@ -51,30 +52,28 @@ export default function LoginScreen({ navigation }) {
           <Text style={styles.forgetText}>Forget Password?</Text>
         </View>
         {/* Buttons Container */}
-        <View style={styles.ButtonsContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.replace("profile")}
+        <View>
+          <Link href='/(tabs)'
             style={styles.NormalButton}
           >
             <Text style={styles.NormalButtonText}>SIGN IN</Text>
-          </TouchableOpacity>
+          </Link>
           {/* Option */}
           <Text style={styles.optionText}>-OR YOU CAN ALSO-</Text>
           <TouchableOpacity style={styles.GoogleButton}>
             <Image
               style={styles.googleIcon}
-              source={require("../../assets/images/iconsapp/google.png")}
+              source={require("../assets/images/iconsapp/google.png")}
             />
             <Text style={styles.GoogleButtonText}>SIGN IN WITH GOOGLE</Text>
           </TouchableOpacity>
         </View>
         {/* Register Account option */}
-        <Text
-          onPress={() => navigation.replace("Register")}
+        <Link href='/registration'
           style={styles.RegisterOption}
         >
           Create a New Account
-        </Text>
+        </Link>
       </View>
     </View>
   );
@@ -86,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1c4d4d",
   },
   titlePage: {
-    paddingTop: "80",
+    paddingTop: 80,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   ImageContainer: {
-    paddingVertical: "28",
+    paddingVertical: 28,
     justifyContent: "center",
     alignItems: "center",
   },
@@ -106,8 +105,8 @@ const styles = StyleSheet.create({
     height: 225,
   },
   SignInContent: {
-    paddingBottom: "28",
-    paddingHorizontal: "28",
+    paddingBottom: 28,
+    paddingHorizontal: 28,
   },
   SignInTitle: {
     fontSize: 26,
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     color: "#F3F3F3",
   },
   InputContainer: {
-    paddingTop: "24",
+    paddingTop: 24,
   },
   inputField: {
     color: "#77ADAD",
@@ -144,7 +143,7 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   ForgotPasswordContainer: {
-    paddingVertical: "10",
+    paddingVertical: 10,
     justifyContent: "flex-end",
     // backgroundColor: "#77ADAD",
   },
@@ -156,6 +155,7 @@ const styles = StyleSheet.create({
   NormalButton: {
     paddingVertical: 14,
     borderRadius: 10,
+    textAlign:'center',
     backgroundColor: "#FF9900",
   },
   NormalButtonText: {
