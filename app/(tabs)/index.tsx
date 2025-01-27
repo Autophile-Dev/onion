@@ -82,6 +82,7 @@ export default function HomeScreen() {
         </View>
       </View>
       {/* Coins Main Part Dashboard */}
+      
     </ScrollView>
     </SafeAreaView>
   );
