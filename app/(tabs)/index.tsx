@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Platform, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, Platform, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TopBar from"@/components/appcomponents/TopBar"
 import Greetings from "@/components/appcomponents/Greetings";
@@ -8,40 +8,49 @@ import { Link } from 'expo-router';
 export default function HomeScreen() {
   const [isSelected, setIsSelected] = useState(false);
   const navigation = useNavigation();
+  const screenWidth = Dimensions.get("screen").width;
   return (
     <SafeAreaView style={styles.Container}>
     <TopBar />
     <ScrollView contentContainerStyle={styles.contentContainer} showsVerticalScrollIndicator={false}>
       <Greetings/>
+      {/* Link Cards */}
       <View style={styles.topCardContainer}>
         <View style={styles.topCardRow}>
-          <Link href='/signals' style={styles.topCard}>
-            <View>
-              <Text style={styles.cardTitle}>Signals</Text>
-            </View>
-            <View>
-              <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/signals.png")} />
+          <Link href='/signals' style={{width:Dimensions.get("screen").width*0.3, height:96}} >
+            <View style={styles.topCard}>
+              <View>
+                <Text style={styles.cardTitle}>Signals</Text>
+              </View>
+              <View>
+                <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/signals.png")} />
+              </View>
             </View>
           </Link >
-          <Link href='/explore' style={styles.topCard}>
+          <Link href='/explore' style={{width:Dimensions.get("screen").width*0.3, height:96}}>
+          <View style={styles.topCard}>
             <View>
               <Text style={styles.cardTitle}>Explore</Text>
             </View>
             <View>
               <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/explore.png")} />
             </View>
+          </View>
           </Link>
-          <TouchableOpacity  style={styles.topCard}>
-            <View>
-              <Text style={styles.cardTitle}>Market</Text>
+          <Link href="/login" style={{width:Dimensions.get("screen").width*0.3, height:96}}>
+            <View style={styles.topCard}>
+              <View>
+                <Text style={styles.cardTitle}>Market</Text>
+              </View>
+              <View>
+                <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/market.png")} />
+              </View>
             </View>
-            <View>
-              <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/market.png")} />
-            </View>
-          </TouchableOpacity>
+          </Link>
         </View>
         <View style={styles.topCardRow}>
-          <View style={styles.topCard}>
+          <Link href="/login" style={{width:Dimensions.get("screen").width*0.3, height:96}}>
+          <View style={styles.topCard}>   
             <View>
               <Text style={styles.cardTitleSubscription}>Subscription</Text>
             </View>
@@ -49,24 +58,30 @@ export default function HomeScreen() {
               <Image style={styles.ImageCardSubscription} source={require("../../assets/images/iconsapp/subscription.png")} />
             </View>
           </View>
-          <Link href='/coin' style={styles.topCard}>
-            <View>
-              <Text style={styles.cardTitle}>Coins</Text>
-            </View>
-            <View>
-              <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/coins.png")} />
+          </Link>
+          <Link href='/coin' style={{width:Dimensions.get("screen").width*0.3, height:96}}>
+            <View style={styles.topCard}>
+              <View>
+                <Text style={styles.cardTitle}>Coins</Text>
+              </View>
+              <View>
+                <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/coins.png")} />
+              </View>
             </View>
           </Link>
-          <Link href='/coin' style={styles.topCard}>
-            <View>
-              <Text style={styles.cardTitle}>Reports</Text>
-            </View>
-            <View>
-              <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/report.png")} />
+          <Link href='/coin' style={{width:Dimensions.get("screen").width*0.3, height:96}}>
+            <View style={styles.topCard}>
+              <View>
+                <Text style={styles.cardTitle}>Reports</Text>
+              </View>
+              <View>
+                <Image style={styles.ImageCard} source={require("../../assets/images/iconsapp/report.png")} />
+              </View>
             </View>
           </Link>
         </View>
       </View>
+      {/* Coins Main Part Dashboard */}
     </ScrollView>
     </SafeAreaView>
   );
@@ -83,24 +98,27 @@ const styles = StyleSheet.create({
   topCardContainer:{
     display:'flex',
     flexDirection:'column',
-    gap: 8,
-    paddingHorizontal:20,
+    gap: 6,
+    alignItems:'center',
+    // paddingHorizontal:10,
   },
   topCardRow:{
     display:'flex',
     flexDirection:'row',
-    gap:8,
+    gap:6,
+    // justifyContent:'space-between'
   },
   topCard:{
     paddingHorizontal: 20,
     paddingVertical: 20,
-    width:112,
+    width: Dimensions.get("screen").width * 0.3,
     height:96,
     borderRadius:15,
     backgroundColor:'#113838',
     display:'flex',
     alignItems:'center',
     flexDirection:'column',
+    justifyContent:'center',
     gap:10,
   },
   ImageCard:{
