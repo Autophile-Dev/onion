@@ -78,7 +78,7 @@ export default function TabLayout() {
           },
           tabBarIcon: ({ focused }) => (
             <Image
-              source={require('../../assets/images/iconsapp/signals.png')}
+              source={require('../../assets/images/iconsapp/signal_new.png')}
               style={[
                 styles.tabIcon,
                 { tintColor: focused ? '#FF9900' : '#FFFFFF' },
